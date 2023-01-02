@@ -3,4 +3,6 @@ class Room < ApplicationRecord
 
   scope :public_rooms, -> { where(is_private: false) }
   # Ex:- scope :active, -> {where(:active => true)}
+
+  after_create_commit { broadcast_append_to 'rooms' }
 end
