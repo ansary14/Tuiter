@@ -1,2 +1,10 @@
-<h1>Page#home</h1>
-<p>Find me in app/views/page/home.html.erb</p>
+<h1>Tuiter</h1>
+<h3>Chatroom + Direct Message</h3>
+
+<% if current_user %>
+  <%= link_to 'Start Chatting', '#' %>
+  <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Login', user_session_path %>
+  <%= link_to 'Signup', new_user_registration_path %>
+<% end %>
