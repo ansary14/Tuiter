@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Room < ApplicationRecord
   validates_uniqueness_of :name
 
@@ -18,5 +20,9 @@ class Room < ApplicationRecord
       Participant.create(user_id: user.id, room_id: single_room.id)
     end
     single_room
+  end
+
+  def participant?(room, user)
+    room.participants.where(user:).exists?
   end
 end
